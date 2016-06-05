@@ -1,0 +1,214 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[a4paper,final,12pt,oneside,article,table]{memoir}
+
+%% Geometry
+%\semiisopage[12]
+\setlength{\topskip}{1.6\topskip} % for \sloppybuttom
+\checkandfixthelayout
+\sloppybottom
+
+%% Typography
+\usepackage{polyglossia,microtype,hyperref,amsmath,unicode-math,xcolor,natbib,tket}
+\definecolor{zen-red}{HTML}{B23333}    \definecolor{zen-orange}{HTML}{E57A33}
+\definecolor{zen-yellow}{HTML}{F0DFAF} \definecolor{zen-green}{HTML}{5F7F5F}
+\definecolor{zen-cyan}{HTML}{93E0E3}   \definecolor{zen-blue}{HTML}{336CB2}
+\setdefaultlanguage{danish} %polyglossia
+
+\hypersetup{colorlinks=true,linkcolor=zen-red,citecolor=zen-green,urlcolor=zen-orange} % hyperref
+\microtypesetup{final,verbose=silent} 
+\setmainfont[Ligatures=TeX,Numbers=OldStyle]{Arno Pro} % fontspec
+%\setmonofont[Scale=MatchLowercase]{DejaVuSansMono} % fontspec
+
+\unimathsetup{math-style=ISO,bold-style=ISO} % unicode-math
+\setmathfont[Scale=MatchLowercase]{Cambria Math} % unicode-math
+
+\newfontface\bbface[Scale=0.87]{TeX Gyre Termes Math} \TKsetup{C = {\bbface\kern-0.1exℂ}} % fontspec,tket
+
+%% Titlepage
+\setlength{\droptitle}{-3em}
+\pretitle{\LARGE\par} \posttitle{\vskip 0.5em}
+\newcommand{\supertitle}[1]{\gdef\suP{#1}}
+\renewcommand{\maketitlehooka}{\ifx\suP\undefined\begin{center}\else\begin{center} {\scshape\suP}\fi}
+\newcommand{\subtitle}[1]{\gdef\suB{#1}}
+\renewcommand{\maketitlehookb}{\ifx\suB\undefined \end{center}\else\par {\large\scshape\suB}\par\end{center}\fi}
+
+%% Header
+\newcommand{\stunum}[1]{\gdef\stuN{#1}}
+\copypagestyle{articlehead}{plain}
+\makeoddhead{articlehead}{\color{gray}\theauthor\ifx\stuN\undefined\else\ifx\stuN\empty\else~(\stuN)\fi\fi}{}{}
+\pagestyle{articlehead}
+
+%% Grapics
+\usepackage{tikz,pgfplots,tikz-timing}
+\usetikzlibrary{mindmap,arrows,positioning,shapes}
+
+%% resten
+\usepackage{threeparttable,siunitx,pdfpages,algpseudocode,algorithm,tkvc}
+\sisetup{per-mode=symbol}
+\makeatletter \renewcommand{\ALG@name}{Algoritme}\makeatother
+\usepackage[]{minted} % requires minted > 2.0-alpha2
+\usemintedstyle{tango}
+
+
+%% Help
+\usepackage{lipsum}
+\usepackage[margin,draft]{fixme} \fxusetheme{color}
+
+\begin{document}
+\supertitle{Programmerings Sprog}
+\title{\VC-papir}
+\subtitle{Genaflevering}
+\author{Mathias~Dannesbo}
+\stunum{201206106}
+\date{\today}
+\maketitle
+
+\chapter{dADS1}
+
+\makeatletter
+\@for\@tempa:=a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,z,α,β,γ,δ,ε,ζ,η,θ,ι,κ,λ,μ,ν,χ,ο,π,ρ,σ,τ,υ,φ,ξ,ψ,ω,Α,Β,Γ,Δ,Ε,Ζ,Η,Θ,Ι,Κ,Λ,Μ,Ν,Χ,Ο,Π,Ρ,Σ,Τ,Υ,Φ,Ξ,Ψ,Ω\do{%
+\expandafter\textit{\@tempa}$\@tempa$ }
+\makeatother
+
+
+{\HUGE \VC \CERM}
+hello \VC tex$m ≥D$TEXT
+\section{\VC Opgave 12 - Potensopløftning}
+\textit{Betragt følgende algoritme:} og der henvises til Tabel \ref{tab:hstr} eller \url{http://wiply.neic.dk/pic/bryllup}. \TKET\footnote{Her er en fodnote.}
+\[\{ p \geq 0 \} r←1, q←p\{I\}, \mathcal{L}(x)\]
+\[\{I ∧ q > 0 \} r=r·x, q= q-1\{I\}\]
+\[\{I ∧ ¬(q > 0) \} ⇒ r=x^p.\]
+\begin{align*}
+    \sum_{i=1}^6 y&= y+1\\
+    \mathbb{1}&
+\end{align*}
+
+running text $\sum_{i=1}^6 y= yx+1$ running text $Σ_{i=1}^6 y= yx+1$ running text
+\begin{align*}
+  \sum_{i=1}^6 y&= yx+1\\
+  Σ_{i=1}^6 y&= yx+1\\
+  I &= (r·x^q = x^p) ∧ (q \geq 0)\\
+  \mathbf{I} &= \mathbf{(r·x^q = x^p) ∧ (q \geq 0)}\\
+  \mathcal{I} &= (rI·x^q = x^p) ∧ (q \geq 0)\\
+  \mathbfcal{I} &= (r·x^q = x^p) ∧ (q \geq 0)
+\end{align*}\fxwarning{\texttt{\textbackslash sum}, Σ does not look right}
+$=<>≤≥←→*()\Bigg(\Bigg)$
+
+\paragraph{Gennemførelse af bevisbyrder}
+\textit{Gennemfør bevisbyrderne.}
+\subparagraph{Inden iterationen} De nuværende værdier, begyndelsesværdierne, indsættes i $I$ og det første kriterium kan da bevises: $1·x^p = x^p ⇔ x^p = x^p$. Inputbetingelsen er $p \geq 0$ og da $q←p$ må det andet kriterium, $q \geq 0$, da også gælde.
+\subparagraph{Efter hver iteration} Efter en iteration er $r'=r·x$ og $q'=q-1$. Det kan indsættes i $I$:
+\[ x' · x^{q'} = x·x·x^{q-1} = x·x^q = x·x^p \]
+\[ x\prime · x^{q\prime} = x·x·x^{q-1} = x·x^q = x·x^p \]
+
+\[ x' · x^{q'} = x·x·x^{q-1} = x·x^q = x·x^p \]
+\[ x^\prime · x^{q\prime} = x·x·x^{q-1} = x·x^q = x·x^p \] 
+Før iterationen var $q>0$ og da $q'=q-1$ må $q' \geq 0$ efter en iteration.
+\subparagraph{Outputtet}
+Det er lige bevist at en en iteration er $q \geq 0$, $q$ ikke kan være negativ på grund af begyndelsesværdierne og da $r·x^q = x^p$ må $r·x^1 = r = x^p$.
+
+Herved er alle byrder bevist.
+
+\paragraph{Termineringsfunktion}
+\textit{Angiv en termineringsfunktion.}
+
+Angives $\mu(x,p,r,q) = q$ som termineringsfunktion gælder følgende
+\[I ⇒ \mu(x,p,r,q) \geq 0 \text{ og } I ∧ (q>0) ⇒ \mu(x,p,r,q) > \mu(x,p,r,q) \geq 0 \]
+da, $q$ ifølge transitionerne falder med 1 for hver udførelse og det er bevist at $q \geq 0$. Det er dermed en gyldig termineringsfunktion.
+
+\paragraph{Konklusion}
+\textit{Konkluder, at algoritmen er korekt.}
+
+Da alle bevisbyrder er bevist og der findes en en gyldig termineringsfunktion, er algoritmen korekt.
+
+\chapter{dProgSprog}
+
+\section*{Excercise 1}
+\textit{In this mandatory exercise, you are asked to implement a variadic version of \texttt{proper-list-append}.}
+
+The implementations and calls of the procedures:
+\inputminted{scheme}{opg1.ss}
+\inputminted{java}{CityImpl.java}
+\textit{Key questions:}
+\textit{What happens if one of the actual parameters of your variadic version of \texttt{proper-list-append} is the empty list?}
+
+\begin{itemize}
+\item The other parameter is returned.
+\end{itemize}
+\textit{What happens if one of the actual parameters of your variadic version of \textit{proper-list-append} is not a proper list?}
+\begin{itemize}
+\item It fails to return and cast an exception.
+\end{itemize}
+\textit{What happens if your variadic version of \textit{proper-list-append} is applied to zero actual parameters?}
+\begin{itemize}
+\item It returns the empty list.
+\end{itemize}
+\textit{What happens if your variadic version of \textit{proper-list-append} is applied to one actual parameter?} 
+\begin{itemize}
+\item It returns that parameter.
+\end{itemize}
+
+\section*{Excercise 2}
+\textit{The goal of this mandatory exercise is to implement the BNF of the following subset of Scheme, and to program a syntax checker that is self-applicable:}
+
+The syntax checker
+
+There are still some missing pieces in the implementation.
+
+\chapter{Arrangementer}
+
+\section{HSTR}
+\begin{table}[htbp]
+  % \caption[]{}
+  \centering
+  \begin{threeparttable}
+  \begin{tabular}{l*{4}{r@{}r}}
+    \toprule
+    Type & \multicolumn{2}{c}{10/11}& \multicolumn{2}{c}{11/12}& \multicolumn{2}{c}{12/13}& \multicolumn{2}{c}{13/14}\\
+    \midrule
+    Personer & \multicolumn{2}{c}{}& \multicolumn{2}{c}{}& \multicolumn{2}{c}{}& \multicolumn{2}{c}{54}\\[1.5ex]
+    Alm. øl                & \tabkas{13}{0} & \tabkas{15}{0}& &---             & &---\\
+    Top                    & &---           & &---          & \tabkas{3,43}{0} & \tabkas{6}{0}\\
+    Tuborg                 & &---           & &---          & \tabkas{2,53}{0} & \tabkas{4}{0}\\
+    Hof                    & &---           & &---          & \tabkas{3,367}{0}& \tabkas{2}{0}\\
+    Høker                  & &---           & &---          & \tabkas{1,7}{0}  & &---\\
+    Odense                 & &---           & &---          & \tabkas{0,97}{0} & &---\\
+    Andre alm. øl\tnote{1} & &---           & &---          & &---             & \tabkas{0}{12}\\[1.5ex]
+    Guldøl                 & \tabkas{2}{0}  & \tabkas{2}{0} & &---             & &---\\
+    LFP                    & &---           & &---          & \tabkas{0,6}{0}  & \tabkas{0}{6}\\
+    Elephant               & &---           & &---          & \tabkas{1}{0}    & &---\\
+    Gyldne Dame            & &---           & &---          & \tabkas{0,37}{0} & \tabkas{0}{7}\\
+    Blå Thor               & &---           & &---          & \tabkas{0}{0}    & \tabkas{0}{0}\\[1.5ex]
+    Vand                   & \tabkas{3}{0}  & \tabkas{3}{0} & &---             & &---\\
+    CocaCola               & &---           & &---          & \tabkas{0,4}{0}  & \tabkas{0}{27}\\
+    CocaCola Zero          & &---           & &---          & &---             & \tabkas{0}{0}\\
+    CocaCola Light         & &---           & &---          & \tabkas{0,13}{0} & &---\\
+    Squash                 & &---           & &---          & \tabkas{0,07}{0} & \tabkas{0}{6}\\
+    Dansk Vand             & &---           & &---          & \tabkas{0,43}{0} & &---\\
+    12xVand                & &---           & &---          & \tabkas{0,08}{0} & \tabkas{0}{6}\\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}
+  \item [1] Der blev medbragt en blandet kasse med Høker, Odense, Tuborg Classic og Carls Special.
+  \end{tablenotes}
+  \end{threeparttable}
+  % \legend{}
+  \label{tab:hstr}
+\end{table}
+
+
+%\clearpage
+\listoftables
+\listoffigures
+\listoflistings
+%\nocite{*}
+%\bibliographystyle{dlfltxbbibtex} \Bibliography{bib}
+%\clearpage \appendix
+
+\end{document}
+
+%%% Local Variables: 
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% End:
