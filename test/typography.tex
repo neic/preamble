@@ -1,0 +1,58 @@
+\chapter{Font test}
+\foreach \x in {1234567890,abcdefghijklmnopqrstuvwxyz,αβξδεφγηικλμνοπθρστυςωχψζ,+−-=≈.≥≤<>}
+{
+  \section{With alfabet: \x}
+  \newcommand{\y}{\x\MakeTextUppercase{\x}}
+  \small
+  \noindent\y\space{\tiny normal}\newline
+  $\mathup{\y}$\space{\tiny math up}\newline
+  \textit{\y}\space{\tiny textit}\newline
+  $\y$\space{\tiny math}\newline
+  \textbf{\y}\space{\tiny textbf}\newline
+  $\mathbfup{\y}$\space{\tiny mathbfup}\newline
+  \textbf{\textit{\y}}\space{\tiny textbfit}\newline
+  $\mathbfit{\y}$\space{\tiny mathbfit}\newline
+  \textsf{\y}\space{\tiny textsf}\newline
+  $\mathsfup{\y}$\space{\tiny mathsfup}\newline
+  \textsf{\textit{\y}}\space{\tiny textsfit}\newline
+  $\mathsfit{\y}$\space{\tiny mathsfit}\newline
+  \textbf{\textsf{\textit{\y}}}\space{\tiny textbfsfit}\newline
+  $\mathbfsfit{\y}$\space{\tiny mathbfsfit}\newline
+  \newpage
+}
+
+\chapter{Number test}
+\tightlists
+\begin{itemize}
+\item Ligning
+\item Math up
+\item lining, textit
+\item math
+\end{itemize}
+
+{\lining A5} $\textup{A5}$ {\lining \textit{G4}} $G4$
+
+\begin{itemize}
+\item mhchem
+\item math
+\end{itemize}
+
+\ce{Mg^{2+}}$Mg^{2+}$
+
+\begin{itemize}
+\item textbf
+\item mathbf
+\end{itemize}
+
+\textbf{c8}$\mathbf{c8}$
+
+
+\chapter{Math test}
+\begin{align*}
+  A = \sum_{a=100}^{k} k \cdot 21\\
+  B = \bigg( \frac{1}{2} \bigg)\\
+  C = \left( \frac{1}{\frac{5}{asdfg}} \right)\\
+  D = \bigg[ \frac{1}{2} \bigg]\\
+  E = \Set{a}{200 ∈ ℤ}\\
+  D = a^{b} + a^{b^{c}} a^{b^{c^{d}}}
+\end{align*}
