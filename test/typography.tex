@@ -22,6 +22,30 @@
 }
 
 \chapter{Number test}
+{
+  \newcommand{\x}{1234567890}
+  \newcommand{\y}{\x\MakeTextUppercase{\x}}
+  \small
+  \noindent\y\space{\tiny normal}\newline
+  $\mathup{\y}$\space{\tiny math up}\newline
+  {\lining\y}\space{\tiny normal lining}\newline
+  {\lining $\mathup{\y}$}\space{\tiny math up lining}\newline
+  \textit{\y}\space{\tiny textit}\newline
+  $\y$\space{\tiny math}\newline
+  {\lining\textit{\y}}\space{\tiny textit lining}\newline
+  {\lining$\y$}\space{\tiny math lining}\newline
+  \textbf{\y}\space{\tiny textbf}\newline
+  $\mathbfup{\y}$\space{\tiny mathbfup}\newline
+  \textbf{\textit{\y}}\space{\tiny textbfit}\newline
+  $\mathbfit{\y}$\space{\tiny mathbfit}\newline
+  \textsf{\y}\space{\tiny textsf}\newline
+  $\mathsfup{\y}$\space{\tiny mathsfup}\newline
+  \textsf{\textit{\y}}\space{\tiny textsfit}\newline
+  $\mathsfit{\y}$\space{\tiny mathsfit}\newline
+  \textbf{\textsf{\textit{\y}}}\space{\tiny textbfsfit}\newline
+  $\mathbfsfit{\y}$\space{\tiny mathbfsfit}\newline
+}
+
 \tightlists
 \begin{itemize}
 \item Ligning
