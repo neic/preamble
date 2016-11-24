@@ -48,6 +48,13 @@
 \newcommand{\lining}{\addfontfeature{Numbers=Lining}}  % fontspec
 \newfontface\swash[Ligatures=TeX,Numbers=OldStyle,Style=Swash]{Arno Pro Italic}
 
+% Use \abbr with uppercase instead of \textsc with lowercase for abbreviations.
+% E.g. \abbr{NATO} instead of \textsc{nato}. This makes the copyable text
+% uppercase and also works in headings when hyperref or bookmark generates a pdf
+% bookmark tree. TODO: Add Bringhurst ref.
+\newcommand{\abbr}[1]{\texorpdfstring{
+    {\addfontfeature{Letters=UppercaseSmallCaps}#1}}{#1}} % hyperref, fontspec
+
 % Bringhurst 4.3.3 [Notes:] Use superscripts in the text but full-size
 % numbers in the notes themselves. Memoir 12.1.2 [Footnotes:] Styling.
 \setlength{\footmarkwidth}{-1sp} %memoir
