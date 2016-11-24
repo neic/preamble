@@ -55,13 +55,30 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{fontspec,subfig}
-\setmainfont{Arno Pro}[Ligatures=TeX,Numbers=OldStyle] % fontspec
-\setsansfont{Gill Sans}[Scale=MatchLowercase] % fontspec
 
-% Use \lining to get lining numbers in a scope. Use \swash to get
-% swash style in a scope.
-\newcommand{\lining}{\addfontfeature{Numbers=Lining}}  % fontspec
-\newfontface\swash[Ligatures=TeX,Numbers=OldStyle,Style=Swash]{Arno Pro Italic}
+% Create a flag, fancyfonts. If this is set to false, Arno, Gill Sans and
+% Cambria Math is not used. This is helpful if you (or your collaborators) don't
+% have the fonts installed. If this is set to false, the functionality of the
+% preamble is uncertain and untested.
+\newtoggle{fancyfonts}
+% Uncomment the line you want to use.
+\toggletrue{fancyfonts}
+%\togglefalse{fancyfonts}
+
+\iftoggle{fancyfonts}{%
+  % Set Arno Pro as the main font and Gill Sans as the sans font.
+  \setmainfont{Arno Pro}[Ligatures=TeX,Numbers=OldStyle] % fontspec
+  \setsansfont{Gill Sans}[Scale=MatchLowercase] % fontspec
+
+  % Use \lining to get lining numbers in a scope. Use \swash to get
+  % swash style in a scope.
+  \newcommand{\lining}{\addfontfeature{Numbers=Lining}} % fontspec
+  \newfontface\swash[Ligatures=TeX,Numbers=OldStyle,Style=Swash]{Arno Pro Italic}
+}{
+  % If fancyfonts is not set to true. Fail silently on \lining and \swash.
+  \newcommand{\lining}{}
+  \newcommand{\swash}{}
+} % end \iftoggle{fancyfonts}
 
 % Use \abbr with uppercase instead of \textsc with lowercase for abbreviations.
 % E.g. \abbr{NATO} instead of \textsc{nato}. This makes the copyable text
@@ -95,31 +112,28 @@
 \usepackage{amsmath,unicode-math,mathtools}
 \unimathsetup{math-style=ISO,bold-style=ISO} % unicode-math
 
-\setmathfont{Cambria Math}[Scale=MatchLowercase,vargreek-shape=unicode] % unicode-math
+\iftoggle{fancyfonts}{%
+  % Set Arno Pro as the main math font for the glyphs it has. Use Cambria Math as
+  % fallback for the rest. All macros are from unicode-math.
+  \setmathfont{Cambria Math}[Scale=MatchLowercase,vargreek-shape=unicode]
+  \setmathfont{Arno Pro}[range={up/{num,latin,Latin,greek,Greek},
+    \question,\exclam,\mathdollar,%
+    \percent,\ampersand,\plus,\comma,\period,\mathslash,\mathcolon,%
+    \semicolon,\less,\equal,\greater,\backslash,\atsign,\vert,%
+    \times,\lbrace,\rbrace,\div}] % Missing \lbrack, \rbrack
+  \setmathfont{Arno Pro Italic}[range={it/{num,latin,Latin,greek,Greek}}]
+  \setmathfont{Arno Pro Bold}[range = {bfup/{num,latin,Latin,greek,Greek}}]
+  \setmathfont{Arno Pro Bold Italic}[range={bfit/{num,latin,Latin,greek,Greek}}]
 
-\setmathfont{Arno Pro}[range={up/{num,latin,Latin,greek,Greek},
-  \question,\exclam,\mathdollar,%
-  \percent,\ampersand,\plus,\comma,\period,\mathslash,\mathcolon,%
-  \semicolon,\less,\equal,\greater,\backslash,\atsign,\vert,%
-  \times,\lbrace,\rbrace,\div}] % unicode-math. Missing \lbrack, \rbrack
-\setmathfont{Arno Pro Italic}[range={it/{num,latin,Latin,greek,Greek}}]
-\setmathfont{Arno Pro Bold}[range = {bfup/{num,latin,Latin,greek,Greek}}]
-\setmathfont{Arno Pro Bold Italic}[range={bfit/{num,latin,Latin,greek,Greek}}]
+  % Set Gill Sans as the sf math font.
+  \setmathfont{Gill Sans Std}[Scale=MatchLowercase,range={sfup/{num,latin,Latin,greek,Greek}}]
+  \setmathfont{Gill Sans Std Italic}[Scale=MatchLowercase,range={sfit/{num,latin,Latin,greek,Greek}}]
+  \setmathfont{Gill Sans Std Bold}[Scale=MatchLowercase,range={bfsfup/{num,latin,Latin,greek,Greek}}]
+  \setmathfont{Gill Sans Std Bold Italic}[Scale=MatchLowercase,range={bfsfit/{num,latin,Latin,greek,Greek}}]
 
-\setmathfont{Gill Sans Std}[Scale=MatchLowercase,range={sfup/{num,latin,Latin,greek,Greek}}]
-\setmathfont{Gill Sans Std Italic}[Scale=MatchLowercase,range={sfit/{num,latin,Latin,greek,Greek}}]
-
-\setmathfont{Gill Sans Std Bold}[Scale=MatchLowercase,range={bfsfup/{num,latin,Latin,greek,Greek}}]
-\setmathfont{Gill Sans Std Bold Italic}[Scale=MatchLowercase,range={bfsfit/{num,latin,Latin,greek,Greek}}]
-
-\setmathfont{Arno Pro Italic}[range={cal,bfcal}, RawFeature={+swsh}]
-
-%\setmathfont{Arno Pro}[range=tt->up]
-
-%\else
-%   \setmathfont[Scale=MatchLowercase]{Cambria Math} % unicode-math
-% \fi
-
+  % Set Arno Pro with the swash style as the math cal font
+  \setmathfont{Arno Pro Italic}[range={cal,bfcal}, RawFeature={+swsh}]
+}{} % end \iftoggle{fancyfonts}
 
 \usepackage[mode = text,
 text-angstrom = {Å},
