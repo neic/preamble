@@ -23,6 +23,9 @@
 %\listfiles
 \documentclass[a4paper,12pt,twoside,article,table,english,final]{memoir}[2015/07/08]
 
+% Include etoolbox for various tools used throughout the preamble
+\usepackage{etoolbox}
+
 %%%%%%%%%%%%%%%%
 %%% Geometry %%%
 %%%%%%%%%%%%%%%%
@@ -32,6 +35,20 @@
 \setlength{\topskip}{1.6\topskip} %memoir
 \checkandfixthelayout %memoir
 \sloppybottom %memoir
+
+% Bringhurst 4.3.3 [Notes:] Use superscripts in the text but full-size
+% numbers in the notes themselves. Memoir 12.1.2 [Footnotes:] Styling.
+\setlength{\footmarkwidth}{-1sp} %memoir
+\setlength{\footmarksep}{0em} %memoir
+\footmarkstyle{#1 } %memoir
+
+% Use the same footmarkstyle with threeparttable
+\usepackage[online]{threeparttable}
+\appto\TPTnoteSettings{\footnotesize} %threeparttable (req. etoolbox)
+
+% Use microtype
+\usepackage{microtype}
+\microtypesetup{final,verbose=silent} %microtype
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Fonts and misc. typography %%%
@@ -53,22 +70,10 @@
 \newcommand{\abbr}[1]{\texorpdfstring{
     {\addfontfeature{Letters=UppercaseSmallCaps}#1}}{#1}} % hyperref, fontspec
 
-% Bringhurst 4.3.3 [Notes:] Use superscripts in the text but full-size
-% numbers in the notes themselves. Memoir 12.1.2 [Footnotes:] Styling.
-\setlength{\footmarkwidth}{-1sp} %memoir
-\setlength{\footmarksep}{0em} %memoir
-\footmarkstyle{#1 } %memoir
-
-% Use the same footmarkstyle with threeparttable
-\usepackage[online]{threeparttable}
-\usepackage{etoolbox}
-\appto\TPTnoteSettings{\footnotesize} %threeparttable (req. etoolbox)
-
 % Use sans-serif for captions
 % TODO: Få det til at virke med \textsc{}
 \captionnamefont{\sffamily}
 \captiontitlefont{\sffamily}
-
 
 %%%%%%%%%%%%%%%%%%%%
 %%% Localization %%%
@@ -80,10 +85,6 @@
 % language.
 \usepackage{polyglossia}
 \setdefaultlanguage{english} %polyglossia
-
-% Use microtype
-\usepackage{microtype}
-\microtypesetup{final,verbose=silent} %microtype
 
 \maxtocdepth{subsection}
 
