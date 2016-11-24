@@ -27,8 +27,6 @@
 %%% Geometry %%%
 %%%%%%%%%%%%%%%%
 
-%\isopage[12]
-
 % Bringhurst 2.4.8 Never begin a page with the last line of a
 % multi-line paragraph. Memoir 3.5 Sloppybottom.
 \setlength{\topskip}{1.6\topskip} %memoir
@@ -106,7 +104,6 @@
 \setmathfont{Arno Pro Italic}[range={it/{num,latin,Latin,greek,Greek}}]
 \setmathfont{Arno Pro Bold}[range = {bfup/{num,latin,Latin,greek,Greek}}]
 \setmathfont{Arno Pro Bold Italic}[range={bfit/{num,latin,Latin,greek,Greek}}]
-
 
 \setmathfont{Gill Sans Std}[Scale=MatchLowercase,range={sfup/{num,latin,Latin,greek,Greek}}]
 \setmathfont{Gill Sans Std Italic}[Scale=MatchLowercase,range={sfit/{num,latin,Latin,greek,Greek}}]
@@ -220,7 +217,7 @@ math-angstrom = {Å},
 %%% Help %%%
 %%%%%%%%%%%%
 % TODO
-%\usepackage{lipsum}
+\usepackage{lipsum}
 \usepackage[margin,draft]{fixme} \fxusetheme{color}
 
 %%%%%%%%%%%%%%%%%%%%
@@ -259,9 +256,9 @@ math-angstrom = {Å},
 %%%%%%%%%%%%%%%%%%%
 \frontmatter
 %\thispagestyle{empty}
-\supertitle{}
+\supertitle{A super title}
 \title{A title}
-\subtitle{}
+\subtitle{A sub title}
 \author{An-Author}
 \stunum{12345678}
 \date{\today}
@@ -297,8 +294,8 @@ math-angstrom = {Å},
 %%%%%%%%%%%%%%%%%%
 \clearpage
 \backmatter
-%\listoftables
-\listoffigures
+% \listoftables
+% \listoffigures
 % \listoflistings
 
 \end{document}
@@ -306,4 +303,6 @@ math-angstrom = {Å},
 %%% Local Variables:
 %%% coding: utf-8
 %%% mode: latex
+%%% TeX-engine: xetex
+%%% TeX-command-extra-options: "-shell-escape"
 %%% End:
