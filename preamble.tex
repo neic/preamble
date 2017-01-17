@@ -83,8 +83,9 @@
 % Use \abbr with uppercase instead of \textsc with lowercase for abbreviations.
 % E.g. \abbr{NATO} instead of \textsc{nato}. This makes the copyable text
 % uppercase and also works in headings when hyperref or bookmark generates a pdf
-% bookmark tree. TODO: Add Bringhurst ref.
-\newcommand{\abbr}[1]{\texorpdfstring{
+% bookmark tree. Bringhurst 3.2.2 For abbreviations and acronyms in the midst of
+% normal text, use spaced small caps.
+\newcommand{\abbr}[1]{\texorpdfstring{%
     {\addfontfeature{Letters=UppercaseSmallCaps}#1}}{#1}} % hyperref, fontspec
 
 % Use sans-serif for captions
