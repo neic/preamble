@@ -46,6 +46,11 @@
 \usepackage[online]{threeparttable}
 \appto\TPTnoteSettings{\footnotesize} %threeparttable (req. etoolbox)
 
+% Use sans-serif for captions
+% Memoir 10.6 Caption styling.
+\captionnamefont{\sffamily\scshape} % memoir
+\captiontitlefont{\sffamily} % memoir
+
 % Use microtype
 \usepackage{microtype}
 \microtypesetup{final,verbose=silent} %microtype
@@ -54,7 +59,7 @@
 %%% Fonts and misc. typography %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{fontspec,subfig}
+\usepackage{fontspec}
 
 % Create a flag, fancyfonts. If this is set to false, Arno, Gill Sans and
 % Cambria Math is not used. This is helpful if you (or your collaborators) don't
@@ -88,10 +93,6 @@
 \newcommand{\abbr}[1]{\texorpdfstring{%
     {\addfontfeature{Letters=UppercaseSmallCaps}#1}}{#1}} % hyperref, fontspec
 
-% Use sans-serif for captions
-% TODO: Få det til at virke med \textsc{}
-\captionnamefont{\sffamily}
-\captiontitlefont{\sffamily}
 
 %%%%%%%%%%%%%%%%%%%%
 %%% Localization %%%
