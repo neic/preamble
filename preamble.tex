@@ -68,7 +68,7 @@
 \iftoggle{fancyfonts}{%
   % Set Arno Pro as the main font and Gill Sans as the sans font.
   \setmainfont{Arno Pro}[Ligatures=TeX,Numbers=OldStyle] % fontspec
-  \setsansfont{Gill Sans}[Scale=MatchLowercase] % fontspec
+  \setsansfont{Gill Sans Nova}[Scale=MatchUppercase,Numbers=OldStyle] % fontspec
 
   % Use \lining to get lining numbers in a scope. Use \swash to get
   % swash style in a scope.
@@ -115,25 +115,49 @@
 
 \iftoggle{fancyfonts}{%
   % Set Arno Pro as the main math font for the glyphs it has. Use Cambria Math as
-  % fallback for the rest. All macros are from unicode-math.
+  % fallback for the rest. \setmathfont with range={…} and
+  % (s)script-features={…} are from unicode-math. Script=Latin is directly from
+  % fontspec.
+  % Script=Latin tells fontspec to use the OpenType script 'Latin' instead
+  % of the expected 'Math'. The 'Math' script is not defined in Arno or Gill
+  % Sans Nova as they are not math types.
+  % (s)script-features={} refer to script unrelated the OpenType script above.
+  % It overwrites unicode-maths normal OpenType feature flags for super- and
+  % subscript. It defaults to '+ssty', which is also missing from Arno and Gill
+  % Sans Nova.
   \setmathfont{Cambria Math}[Scale=MatchLowercase,vargreek-shape=unicode]
-  \setmathfont{Arno Pro}[range={up/{num,latin,Latin,greek,Greek},
-    \question,\exclam,\mathdollar,%
-    \percent,\ampersand,\plus,\comma,\period,\mathslash,\mathcolon,%
-    \semicolon,\less,\equal,\greater,\backslash,\atsign,\vert,%
-    \times,\lbrace,\rbrace,\div}] % Missing \lbrack, \rbrack
-  \setmathfont{Arno Pro Italic}[range={it/{num,latin,Latin,greek,Greek}}]
-  \setmathfont{Arno Pro Bold}[range = {bfup/{num,latin,Latin,greek,Greek}}]
-  \setmathfont{Arno Pro Bold Italic}[range={bfit/{num,latin,Latin,greek,Greek}}]
+  \setmathfont{Arno Pro}[range={up/{num,latin,Latin,greek,Greek},%
+    % Below are all the symbols defined in unicode-math which are also present
+    % in Arno Pro, have the right metrics and have no similar symbols missing.
+    \mathexclam,\mathplus,\pm,\div,\dagger,\ddagger,\minus,\mathoctothorpe,%
+    \mathdollar,\mathpercent,\mathampersand,\mathquestion,\mathatsign,%
+    \mathsterling,\mathyen,\euro,\increment,\infty,\checkmark,%
+    \less,\equal,\greater,\ne,\leq,\geq,\matheth,\ell,\partial,},%
+  Script=Latin, script-features={}, sscript-features={}]
+  \setmathfont{Arno Pro Italic}[range={it/{latin,Latin,greek,Greek}},%
+  Script=Latin, script-features={}, sscript-features={}]
+  \setmathfont{Arno Pro Bold}[range = {bfup/{num,latin,Latin,greek,Greek}},%
+  Script=Latin, script-features={}, sscript-features={}]
+  \setmathfont{Arno Pro Bold Italic}[range={bfit/{latin,Latin,greek,Greek}},%
+  Script=Latin, script-features={}, sscript-features={}]
 
-  % Set Gill Sans as the sf math font.
-  \setmathfont{Gill Sans Std}[Scale=MatchLowercase,range={sfup/{num,latin,Latin,greek,Greek}}]
-  \setmathfont{Gill Sans Std Italic}[Scale=MatchLowercase,range={sfit/{num,latin,Latin,greek,Greek}}]
-  \setmathfont{Gill Sans Std Bold}[Scale=MatchLowercase,range={bfsfup/{num,latin,Latin,greek,Greek}}]
-  \setmathfont{Gill Sans Std Bold Italic}[Scale=MatchLowercase,range={bfsfit/{num,latin,Latin,greek,Greek}}]
+  % Set Gill Sans Nova as the sf math font.
+  \setmathfont{Gill Sans Nova Book}[Scale=MatchUppercase,
+  range={sfup/{num,latin,Latin}},% missing greek,Greek
+  Script=Latin, script-features={}, sscript-features={}]
+  \setmathfont{Gill Sans Nova Book Italic}[Scale=MatchUppercase,%
+  range={sfit/{latin,Latin}},% missing num,greek,Greek
+  Script=Latin, script-features={}, sscript-features={}]
+  \setmathfont{Gill Sans Nova Bold}[Scale=MatchUppercase,%
+  range={bfsfup/{num,latin,Latin}},% missing greek,Greek
+  Script=Latin, script-features={}, sscript-features={}]
+  \setmathfont{Gill Sans Nova Bold Italic}[Scale=MatchUppercase,%
+  range={bfsfit/{latin,Latin,greek,Greek}},% missing num
+  Script=Latin, script-features={}, sscript-features={}]
 
   % Set Arno Pro with the swash style as the math cal font
-  \setmathfont{Arno Pro Italic}[range={cal,bfcal}, RawFeature={+swsh}]
+  \setmathfont{Arno Pro Italic}[range={cal,bfcal}, RawFeature={+swsh},
+  Script=Latin, script-features={}, sscript-features={}]
 }{} % end \iftoggle{fancyfonts}
 
 \usepackage[mode = text,
