@@ -105,8 +105,6 @@
 \usepackage{polyglossia}
 \setdefaultlanguage{english} %polyglossia
 
-\maxtocdepth{subsection}
-
 %%%%%%%%%%%%%%%%%%
 %%% Math setup %%%
 %%%%%%%%%%%%%%%%%%
@@ -236,11 +234,20 @@ math-angstrom = {Å},
 \makeoddhead{articlehead}{\color{gray}\suB}{}{\color{gray}\thedate}
 \pagestyle{articlehead}
 
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Table of Content %%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Generate a pdf outline with bookmarks.
+\usepackage{bookmark}
+
+\maxtocdepth{subsection}
 
 %%%%%%%%%%%%%%
 %%% resten %%%
 %%%%%%%%%%%%%%
 % TODO
+
 \usepackage{pdfpages,mhchem,xspace}
 
 % \usepackage{minted} % requires minted > 2.0-alpha2
@@ -276,8 +283,11 @@ math-angstrom = {Å},
 %%%%%%%%%%%%%%%%%%
 %%% References %%%
 %%%%%%%%%%%%%%%%%%
-% TODO
-% varioref, hyperref and cleverref need to be loaded in this order
+
+% Use \vref, \Vref or some other macro from varioref for references.
+
+% varioref, hyperref and cleverref need to be loaded in this order. See
+% cleverref doc. section 13.
 \usepackage{varioref}
 \usepackage[unicode=true,
     pdfusetitle,
@@ -285,10 +295,6 @@ math-angstrom = {Å},
     pdfdisplaydoctitle=true,
     ]{hyperref}
 \usepackage{cleveref}
-\usepackage{bookmark}
-
-
-
 
 \begin{document}
 %%%%%%%%%%%%%%%%%%%
