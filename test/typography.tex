@@ -28,31 +28,57 @@ a\-b\-c\-d\-e\-f\-g\-h\-i\-j\-k\-l\-m\-n\-o\-p\-q\-r\-s\-t\-u\-v\-w\-x\-y\-z\-a\
   $\mathsfit{\y}$\space{\tiny mathsfit}\newline
   \textbf{\textsf{\textit{\y}}}\space{\tiny textbfsfit}\newline
   $\mathbfsfit{\y}$\space{\tiny mathbfsfit}\newline
+  {\swash\y}\space{\tiny swash}\newline
+  $\mathcal{\y}$\space{\tiny mathcal}\newline
   \newpage
 }
 
 \chapter{Number test}
 {
-  \newcommand{\x}{1234567890}
-  \newcommand{\y}{\x\MakeTextUppercase{\x}}
+  \newcommand{\y}{1234567890}
   \small
+  Should all be oldstyle upright:\newline
   \noindent\y\space{\tiny normal}\newline
-  $\mathup{\y}$\space{\tiny math up}\newline
+  Should all be lining upright:\newline
   {\lining\y}\space{\tiny normal lining}\newline
-  {\lining $\mathup{\y}$}\space{\tiny math up lining}\newline
-  \textit{\y}\space{\tiny textit}\newline
   $\y$\space{\tiny math}\newline
+  $\mathup{\y}$\space{\tiny mathup}\newline
+  Should all be oldstyle italic:\newline
+  \textit{\y}\space{\tiny textit}\newline
+  Should all be lining italic:\newline
   {\lining\textit{\y}}\space{\tiny textit lining}\newline
-  {\lining$\y$}\space{\tiny math lining}\newline
+  $\mathit{\y}$\space{\tiny mathit}\newline
+  Should all be oldstyle bold:\newline
   \textbf{\y}\space{\tiny textbf}\newline
+  Should all be lining bold:\newline
+  {\lining \textbf{\y}}\space{\tiny textbf lining}\newline
+  $\mathbf{\y}$\space{\tiny mathbf}\newline
   $\mathbfup{\y}$\space{\tiny mathbfup}\newline
+  Should all be oldstyle bold italic:\newline
   \textbf{\textit{\y}}\space{\tiny textbfit}\newline
+  Should all be lining bold italic:\newline
+  {\lining \textbf{\textit{\y}}} \space{\tiny textbfit lining}\newline
   $\mathbfit{\y}$\space{\tiny mathbfit}\newline
+  Should all be sans oldstyle:\newline
   \textsf{\y}\space{\tiny textsf}\newline
+  Should all be sans lining:\newline
+  \textsf{\lining\y}\space{\tiny textsf lining}\newline
+  $\mathsf{\y}$\space{\tiny mathsf}\newline
   $\mathsfup{\y}$\space{\tiny mathsfup}\newline
+  Should all be sans oldstyle italic:\newline
   \textsf{\textit{\y}}\space{\tiny textsfit}\newline
+  Should all be sans lining italic:\newline
+  \textsf{\lining\textit{\y}}\space{\tiny textsfit lining}\newline
   $\mathsfit{\y}$\space{\tiny mathsfit}\newline
+  Should all be sans oldstyle bold:\newline
+  \textbf{\textsf{\y}}\space{\tiny textbfsf}\newline
+  Should all be sans lining bold:\newline
+  \textbf{\textsf{\lining\y}} \space{\tiny textbfsf lining}\newline
+  $\mathbfsf{\y}$\space{\tiny mathbfsf}\newline
+  Should all be sans oldstyle bold italic:\newline
   \textbf{\textsf{\textit{\y}}}\space{\tiny textbfsfit}\newline
+  Should all be sans lining bold italic:\newline
+  \textbf{\textsf{\lining\textit{\y}}} \space{\tiny textbfsfit lining}\newline
   $\mathbfsfit{\y}$\space{\tiny mathbfsfit}\newline
 }
 
