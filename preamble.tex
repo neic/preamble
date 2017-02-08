@@ -234,15 +234,6 @@ math-angstrom = {Å},
 \makeoddhead{articlehead}{\color{gray}\suB}{}{\color{gray}\thedate}
 \pagestyle{articlehead}
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Table of Content %%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Generate a pdf outline with bookmarks.
-\usepackage{bookmark}
-
-\maxtocdepth{subsection}
-
 %%%%%%%%%%%%%%
 %%% resten %%%
 %%%%%%%%%%%%%%
@@ -286,8 +277,8 @@ math-angstrom = {Å},
 
 % Use \vref, \Vref or some other macro from varioref for references.
 
-% varioref, hyperref and cleverref need to be loaded in this order. See
-% cleverref doc. section 13.
+% varioref, hyperref, cleverref and bookmarks need to be loaded in this order.
+% See cleverref doc. section 13.
 \usepackage{varioref}
 \usepackage[unicode=true,
     pdfusetitle,
@@ -295,6 +286,17 @@ math-angstrom = {Å},
     pdfdisplaydoctitle=true,
     ]{hyperref}
 \usepackage{cleveref}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Table of Content %%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Generate a pdf outline with bookmarks.
+\usepackage{bookmark}
+\usepackage[hyphenation, lastparline, nosingleletter,homeoarchy,rivers,draft]{impnattypo}
+
+\maxtocdepth{section}
 
 \begin{document}
 %%%%%%%%%%%%%%%%%%%
