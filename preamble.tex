@@ -20,7 +20,7 @@
 
 \RequirePackage[l2tabu, orthodox]{nag}
 %\listfiles
-\documentclass[a4paper,12pt,twoside,article,table,english,final]{memoir}[2015/07/08]
+\documentclass[a4paper,12pt,twoside,article,table,english,draft]{memoir}[2015/07/08]
 
 % Include etoolbox for various tools used throughout the preamble
 \usepackage{etoolbox}
@@ -50,9 +50,11 @@
 \captionnamefont{\sffamily\scshape} % memoir
 \captiontitlefont{\sffamily} % memoir
 
-% Use microtype
+% Use micro-typography.
+% Bringhurst 9.4.1 Use the best available justification engine
 \usepackage{microtype}
-\microtypesetup{final,verbose=silent} %microtype
+\microtypesetup{final} %microtype
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Fonts and misc. typography %%%
