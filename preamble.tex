@@ -92,7 +92,10 @@
 % bookmark tree. Bringhurst 3.2.2 For abbreviations and acronyms in the midst of
 % normal text, use spaced small caps.
 \newcommand{\abbr}[1]{\texorpdfstring{%
-    {\addfontfeature{Letters=UppercaseSmallCaps}#1}}{#1}} % hyperref, fontspec
+    {\iftoggle{fancyfonts}{%
+        \addfontfeature{Letters=UppercaseSmallCaps}#1}{%
+        \textsc{\lowercase{#1}}}
+    }}{#1}} % hyperref, fontspec
 
 
 %%%%%%%%%%%%%%%%%%%%
