@@ -50,6 +50,14 @@
 \captionnamefont{\sffamily\scshape} % memoir
 \captiontitlefont{\sffamily} % memoir
 
+% Setup the use of subfloats in figures and tables. Use
+% \subbottom[<caption>]{\includegraphics{…} \label{…}} for a subfigure with a
+% caption beneath. Use \subtop[…]{…} for one above. Use \subcaption{<caption>}
+% in a minipage.
+% Memoir 10.9 Subcaptions
+\newsubfloat{figure}
+\newsubfloat{table}
+
 % Use micro-typography.
 % Bringhurst 9.4.1 Use the best available justification engine
 \usepackage{microtype}
