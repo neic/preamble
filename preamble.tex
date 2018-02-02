@@ -225,6 +225,11 @@
 % And set that cyclelist as a global standard
 \pgfplotsset{cycle list name={tcolor}} % pgfplots
 
+% Transfer siunitx setting to pgf for identical number representation in text
+% and figures. See section 7.10 'Transferring settings to pgf' of the siunitx
+% manual.
+\SendSettingsToPgf % siunitx
+
 
 %%%%%%%%%%%%%%%%%%%%
 %%% TÅGEKAMMERET %%%
