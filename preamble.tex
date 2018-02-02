@@ -136,7 +136,7 @@
   % It overwrites unicode-maths normal OpenType feature flags for super- and
   % subscript. It defaults to '+ssty', which is also missing from Arno and Gill
   % Sans Nova.
-  \setmathfont{Cambria Math}[Scale=MatchLowercase] % unicode-math
+  \setmathfont{Cambria Math}[Scale=MatchLowercase]
   \setmathfont{Arno Pro}[range={up/{num,latin,Latin,greek,Greek},%
     % Below are all the symbols defined in unicode-math which are also present
     % in Arno Pro, have the right metrics and have no similar symbols missing.
@@ -144,31 +144,31 @@
     \mathdollar,\mathpercent,\mathampersand,\mathquestion,\mathatsign,%
     \mathsterling,\mathyen,\euro,\increment,\infty,\checkmark,%
     \less,\equal,\greater,\ne,\leq,\geq,\matheth,\ell,\partial,},%
-  Script=Latin, script-features={}, sscript-features={}] % unicode-math
+  Script=Latin, script-features={}, sscript-features={}]
   \setmathfont{Arno Pro Italic}[range={it/{latin,Latin,greek,Greek}},%
-  Script=Latin, script-features={}, sscript-features={}] % unicode-math
+  Script=Latin, script-features={}, sscript-features={}]
   \setmathfont{Arno Pro Bold}[range = {bfup/{num,latin,Latin,greek,Greek}},%
-  Script=Latin, script-features={}, sscript-features={}] % unicode-math
+  Script=Latin, script-features={}, sscript-features={}]
   \setmathfont{Arno Pro Bold Italic}[range={bfit/{latin,Latin,greek,Greek}},%
-  Script=Latin, script-features={}, sscript-features={}] % unicode-math
+  Script=Latin, script-features={}, sscript-features={}]
 
   % Set Gill Sans Nova as the sf math font.
   \setmathfont{Gill Sans Nova Book}[Scale=MatchUppercase,
   range={sfup/{num,latin,Latin}},% missing greek,Greek
-  Script=Latin, script-features={}, sscript-features={}] % unicode-math
+  Script=Latin, script-features={}, sscript-features={}]
   \setmathfont{Gill Sans Nova Book Italic}[Scale=MatchUppercase,%
   range={sfit/{latin,Latin}},% missing num,greek,Greek
-  Script=Latin, script-features={}, sscript-features={}] % unicode-math
+  Script=Latin, script-features={}, sscript-features={}]
   \setmathfont{Gill Sans Nova Bold}[Scale=MatchUppercase,%
   range={bfsfup/{num,latin,Latin}},% missing greek,Greek
-  Script=Latin, script-features={}, sscript-features={}] % unicode-math
+  Script=Latin, script-features={}, sscript-features={}]
   \setmathfont{Gill Sans Nova Bold Italic}[Scale=MatchUppercase,%
   range={bfsfit/{latin,Latin,greek,Greek}},% missing num
-  Script=Latin, script-features={}, sscript-features={}] % unicode-math
+  Script=Latin, script-features={}, sscript-features={}]
 
   % Set Arno Pro with the swash style as the math cal font
   \setmathfont{Arno Pro Italic}[range={cal,bfcal}, RawFeature={+swsh},
-  Script=Latin, script-features={}, sscript-features={}] % unicode-math
+  Script=Latin, script-features={}, sscript-features={}]
 }{} % end \iftoggle{fancyfonts}
 
 
