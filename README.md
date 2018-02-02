@@ -1,2 +1,2 @@
 # preamble
-XeLaTeX/LuaLaTeX preamble with modern packages.
+LuaLaTeX preamble with modern packages.
