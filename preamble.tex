@@ -31,19 +31,19 @@
 
 % Bringhurst 2.4.8 Never begin a page with the last line of a
 % multi-line paragraph. Memoir 3.5 Sloppybottom.
-\setlength{\topskip}{1.6\topskip} %memoir
-\checkandfixthelayout %memoir
-\sloppybottom %memoir
+\setlength{\topskip}{1.6\topskip} % memoir
+\checkandfixthelayout % memoir
+\sloppybottom % memoir
 
 % Bringhurst 4.3.3 [Notes:] Use superscripts in the text but full-size
 % numbers in the notes themselves. Memoir 12.1.2 [Footnotes:] Styling.
-\setlength{\footmarkwidth}{-1sp} %memoir
-\setlength{\footmarksep}{0em} %memoir
-\footmarkstyle{#1 } %memoir
+\setlength{\footmarkwidth}{-1sp} % memoir
+\setlength{\footmarksep}{0em} % memoir
+\footmarkstyle{#1 } % memoir
 
 % Use the same footmarkstyle with threeparttable
 \usepackage[online]{threeparttable}
-\appto\TPTnoteSettings{\footnotesize} %threeparttable (req. etoolbox)
+\appto\TPTnoteSettings{\footnotesize} % threeparttable (etoolbox)
 
 % Use sans-serif for captions
 % Memoir 10.6 Caption styling.
@@ -55,13 +55,13 @@
 % caption beneath. Use \subtop[…]{…} for one above. Use \subcaption{<caption>}
 % in a minipage.
 % Memoir 10.9 Subcaptions
-\newsubfloat{figure}
-\newsubfloat{table}
+\newsubfloat{figure} % memoir
+\newsubfloat{table} % memoir
 
 % Use micro-typography.
 % Bringhurst 9.4.1 Use the best available justification engine
 \usepackage{microtype}
-\microtypesetup{final} %microtype
+\microtypesetup{final} % microtype
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -74,12 +74,12 @@
 % Cambria Math is not used. This is helpful if you (or your collaborators) don't
 % have the fonts installed. If this is set to false, the functionality of the
 % preamble is uncertain and untested.
-\newtoggle{fancyfonts}
+\newtoggle{fancyfonts} % (etoolbox)
 % Uncomment the line you want to use.
-\toggletrue{fancyfonts}
-%\togglefalse{fancyfonts}
+\toggletrue{fancyfonts} % (etoolbox)
+%\togglefalse{fancyfonts} % (etoolbox)
 
-\iftoggle{fancyfonts}{%
+\iftoggle{fancyfonts}{% etoolbox
   % Set Arno Pro as the main font and Gill Sans as the sans font.
   \setmainfont{Arno Pro}[Ligatures=TeX,Numbers=OldStyle] % fontspec
   \setsansfont{Gill Sans Nova}[Scale=MatchUppercase,Numbers=OldStyle] % fontspec
@@ -87,7 +87,7 @@
   % Use \lining to get lining numbers in a scope. Use \swash to get
   % swash style in a scope.
   \newcommand{\lining}{\addfontfeature{Numbers=Lining}} % fontspec
-  \newfontface\swash[Ligatures=TeX,Numbers=OldStyle,Style=Swash]{Arno Pro Italic}
+  \newfontface\swash[Ligatures=TeX,Numbers=OldStyle,Style=Swash]{Arno Pro Italic} % fontspec
 }{
   % If fancyfonts is not set to true. Fail silently on \lining and \swash.
   \newcommand{\lining}{}
@@ -103,7 +103,7 @@
     {\iftoggle{fancyfonts}{%
         \addfontfeature{Letters=UppercaseSmallCaps}#1}{%
         \luaexec{tex.print((string.gsub('#1','\%u+','\\textsc{\\lowercase{\%0}}')))}}%
-    }}{#1}} % hyperref, fontspec
+    }}{#1}} % hyperref, fontspec, (etoolbox, luacode)
 
 
 %%%%%%%%%%%%%%%%%%%%
@@ -115,7 +115,7 @@
 % Bringhurst 2.4.5 Hypenate according to the conventions of the
 % language.
 \usepackage{polyglossia}
-\setdefaultlanguage{english} %polyglossia
+\setdefaultlanguage{english} % polyglossia
 
 %%%%%%%%%%%%%%%%%%
 %%% Math setup %%%
@@ -124,7 +124,7 @@
 \usepackage{amsmath,unicode-math,mathtools}
 \unimathsetup{math-style=ISO,bold-style=ISO} % unicode-math
 
-\iftoggle{fancyfonts}{%
+\iftoggle{fancyfonts}{% (etoolbox)
   % Set Arno Pro as the main math font for the glyphs it has. Use Cambria Math as
   % fallback for the rest. \setmathfont with range={…} and
   % (s)script-features={…} are from unicode-math. Script=Latin is directly from
@@ -136,7 +136,7 @@
   % It overwrites unicode-maths normal OpenType feature flags for super- and
   % subscript. It defaults to '+ssty', which is also missing from Arno and Gill
   % Sans Nova.
-  \setmathfont{Cambria Math}[Scale=MatchLowercase]
+  \setmathfont{Cambria Math}[Scale=MatchLowercase] % unicode-math
   \setmathfont{Arno Pro}[range={up/{num,latin,Latin,greek,Greek},%
     % Below are all the symbols defined in unicode-math which are also present
     % in Arno Pro, have the right metrics and have no similar symbols missing.
@@ -144,31 +144,31 @@
     \mathdollar,\mathpercent,\mathampersand,\mathquestion,\mathatsign,%
     \mathsterling,\mathyen,\euro,\increment,\infty,\checkmark,%
     \less,\equal,\greater,\ne,\leq,\geq,\matheth,\ell,\partial,},%
-  Script=Latin, script-features={}, sscript-features={}]
+  Script=Latin, script-features={}, sscript-features={}] % unicode-math
   \setmathfont{Arno Pro Italic}[range={it/{latin,Latin,greek,Greek}},%
-  Script=Latin, script-features={}, sscript-features={}]
+  Script=Latin, script-features={}, sscript-features={}] % unicode-math
   \setmathfont{Arno Pro Bold}[range = {bfup/{num,latin,Latin,greek,Greek}},%
-  Script=Latin, script-features={}, sscript-features={}]
+  Script=Latin, script-features={}, sscript-features={}] % unicode-math
   \setmathfont{Arno Pro Bold Italic}[range={bfit/{latin,Latin,greek,Greek}},%
-  Script=Latin, script-features={}, sscript-features={}]
+  Script=Latin, script-features={}, sscript-features={}] % unicode-math
 
   % Set Gill Sans Nova as the sf math font.
   \setmathfont{Gill Sans Nova Book}[Scale=MatchUppercase,
   range={sfup/{num,latin,Latin}},% missing greek,Greek
-  Script=Latin, script-features={}, sscript-features={}]
+  Script=Latin, script-features={}, sscript-features={}] % unicode-math
   \setmathfont{Gill Sans Nova Book Italic}[Scale=MatchUppercase,%
   range={sfit/{latin,Latin}},% missing num,greek,Greek
-  Script=Latin, script-features={}, sscript-features={}]
+  Script=Latin, script-features={}, sscript-features={}] % unicode-math
   \setmathfont{Gill Sans Nova Bold}[Scale=MatchUppercase,%
   range={bfsfup/{num,latin,Latin}},% missing greek,Greek
-  Script=Latin, script-features={}, sscript-features={}]
+  Script=Latin, script-features={}, sscript-features={}] % unicode-math
   \setmathfont{Gill Sans Nova Bold Italic}[Scale=MatchUppercase,%
   range={bfsfit/{latin,Latin,greek,Greek}},% missing num
-  Script=Latin, script-features={}, sscript-features={}]
+  Script=Latin, script-features={}, sscript-features={}] % unicode-math
 
   % Set Arno Pro with the swash style as the math cal font
   \setmathfont{Arno Pro Italic}[range={cal,bfcal}, RawFeature={+swsh},
-  Script=Latin, script-features={}, sscript-features={}]
+  Script=Latin, script-features={}, sscript-features={}] % unicode-math
 }{} % end \iftoggle{fancyfonts}
 
 \usepackage[mode = text,
@@ -179,8 +179,8 @@ math-angstrom = {Å},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Colors and graphics %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{xxcolor} % xxcolor is an extension for for xcolor which is color.
-                     % xxcolor is shipped with pgf.
+\usepackage{xxcolor} % xxcolor is an extension for xcolor which is an extension
+                     % for color. xxcolor is shipped with pgf.
 
 % The Tableau 20 color palette is a nice list of colors for data visualization.
 \definecolor{tblue}{RGB}{31,119,180}    \definecolor{tlightblue}{RGB}{174,199,232}
@@ -193,16 +193,17 @@ math-angstrom = {Å},
 \definecolor{tgray}{RGB}{127,127,127}   \definecolor{tlightgray}{RGB}{199,199,199}
 \definecolor{tolive}{RGB}{188,189,34}   \definecolor{tlightolive}{RGB}{219,219,141}
 \definecolor{tteal}{RGB}{23,190,207}    \definecolor{tlightteal}{RGB}{158,218,229}
+% all (xx)color
 
 % Use tikz for drawing and pgfplots for plotting.
 \usepackage{tikz,pgfplots}
 
 % Freeze the pgfplots features
-\pgfplotsset{compat=1.15}
+\pgfplotsset{compat=1.15} % pgfplots
 
 % Save the tikz and pgfplots figures as external files for faster compilation.
-\usetikzlibrary{external}
-\tikzexternalize[prefix=tikz/]
+\usetikzlibrary{external} % tikz
+\tikzexternalize[prefix=tikz/] % tikz
 
 % Create a cyclelist of the first ten Tableau 20 colors for pgfplots.
 \pgfplotscreateplotcyclelist{tcolor}{%
@@ -210,10 +211,10 @@ math-angstrom = {Å},
   {solid, color=tred}, {solid, color=tpurple}, {solid, color=tbrown},
   {solid, color=tpink}, {solid, color=tgray}, {solid, color=tolive},
   {solid, color=tteal}%
-}
+} % pgfplots
 
 % And set that cyclelist as a global standard
-\pgfplotsset{cycle list name={tcolor}}
+\pgfplotsset{cycle list name={tcolor}} % pgfplots
 
 
 %%%%%%%%%%%%%%%%%%%%
@@ -271,7 +272,8 @@ math-angstrom = {Å},
 %%%%%%%%%%%%
 % TODO
 \usepackage{lipsum}
-\usepackage[margin,draft]{fixme} \fxusetheme{color}
+\usepackage[margin,draft]{fixme}
+\fxusetheme{color} % fixme
 
 %%%%%%%%%%%%%%%%%%%%
 %%% Bibliography %%%
@@ -285,7 +287,7 @@ math-angstrom = {Å},
   style=numeric,
   sorting=none,
 ]{biblatex}
-\addbibresource{literatur.bib}
+\addbibresource{literatur.bib} % biblatex
 
 %%%%%%%%%%%%%%%%%%
 %%% References %%%
@@ -312,7 +314,7 @@ math-angstrom = {Å},
 \usepackage{bookmark}
 \usepackage[hyphenation, lastparline, nosingleletter,homeoarchy,rivers,draft]{impnattypo}
 
-\maxtocdepth{section}
+\maxtocdepth{section} % memoir
 
 
 %%%%%%%%%%%%%%%%%%%%%%
