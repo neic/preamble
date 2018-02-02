@@ -12,8 +12,9 @@ abcdefghijklmnopqrstuvwxyz
 
 \noindent a\-b\-c\-d\-e\-f\-g\-h\-i\-j\-k\-l\-m\-n\-o\-p\-q\-r\-s\-t\-u\-v\-w\-x\-y\-z\-a\-b\-c\-d\-e\-f\-g\-h\-i\-j\-k\-l\-m\-n\-o\-p\-q\-r\-s\-t\-u\-v\-w\-x\-y\-z\-a\-b\-c\-d\-e\-f\-g\-h\-i\-j\-k\-l\-m\-n\-o\-p\-q\-r\-s\-t\-u\-v\-w\-x\-y\-z\-a\-b\-c\-d\-e\-f\-g\-h\-i\-j\-k\-l\-m\-n\-o\-p\-q\-r\-s\-t\-u\-v\-w\-x\-y\-z
 \chapter{Font test}
-\foreach \x in {1234567890,abcdefghijklmnopqrstuvwxyz,αβξδεφγηικλμνοπθρστυςωχψζ,+−-=≈.≥≤<>}
-{
+\foreach \x in
+{1234567890,abcdefghijklmnopqrstuvwxyz,αβξδεφγηικλμνοπθρστυςωχψζ,+−-=≈.≥≤<>,si:
+  {\SI{1.2e6}{\giga \pascal \per \square \metre} and \SI{2231}{\micro\angstrom}}} {
   \section{With alfabet: \x}
   \newcommand{\y}{\x\MakeTextUppercase{\x}}
   \small
@@ -109,6 +110,23 @@ abcdefghijklmnopqrstuvwxyz
 
 \textbf{c8}$\mathbf{c8}$
 
+\chapter{siunitx test}
+Nam dui ligula, fringilla a, euismod sodales \SI{20}{\meter \per \second},
+sollicitudin \SI{3e3}{\ohm} vel, wisi. Morbi auctor lorem
+\SI{2231}{\micro\angstrom} non justo.
+\begin{align}
+  g &= \SI{9.8}{\newton\per\kilo\gram} \\
+  l &= \SI{124}{\micro\angstrom}\\
+  R &= \SI{3e3}{\ohm}
+\end{align}
+
+{\sffamily Nulla malesuada por itor diam. Donec felis erat, congue
+  \SI{12e6}{\giga \pascal} non, volutpat at, tincidunt tristique, libero.
+  Vivamus viverra fermentum felis. Donec nonummy pellentesque ante.}
+
+\noindent \si{\micro\gram} µg $\si{\micro\gram}$\\
+\si{\angstrom} Å $\si{\angstrom}$\\
+\si{\ohm} Ω $\si{\ohm}$\\
 
 \chapter{Math symbol test}
 

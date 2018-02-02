@@ -171,10 +171,19 @@
   Script=Latin, script-features={}, sscript-features={}] % unicode-math
 }{} % end \iftoggle{fancyfonts}
 
-\usepackage[mode = text,
-text-angstrom = {Å},
-math-angstrom = {Å},
-]{siunitx}
+
+% Use siunitx to typeset numbers and units with \num{}, \si{}, \SI{}{} etc.
+\usepackage{siunitx}
+\sisetup{%
+  % With detect-all, the siunitx macros automatically detects the font around it
+  % and changes its output accordingly.
+  detect-all,
+  % The -micro setup is to appropriate µ when using fontspec and an incompatible
+  % font. Arno and Gill Sans Nova works, but the fonts used with
+  % fancyfonts=false, does not. See section 7.6 Symbols and XeTeX in
+  % siunitx.pdf. \angstrom and \ohm works without any modification.
+  text-micro = {µ}, math-micro=\text{µ},
+} % siunitx
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Colors and graphics %%%
