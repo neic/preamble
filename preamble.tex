@@ -45,10 +45,6 @@
 \usepackage[online]{threeparttable}
 \appto\TPTnoteSettings{\footnotesize} % threeparttable (etoolbox)
 
-% Use sans-serif for captions
-% Memoir 10.6 Caption styling.
-\captionnamefont{\sffamily\scshape} % memoir
-\captiontitlefont{\sffamily} % memoir
 
 % Setup the use of subfloats in figures and tables. Use
 % \subbottom[<caption>]{\includegraphics{…} \label{…}} for a subfigure with a
@@ -57,6 +53,34 @@
 % Memoir 10.9 Subcaptions
 \newsubfloat{figure} % memoir
 \newsubfloat{table} % memoir
+
+% Use sans-serif for captions and subcaptions. Make the caption name and counter
+% smallcaps.
+% Memoir 10.6 Caption styling and 10.9 Subcaptions.
+\captionnamefont{\sffamily\scshape} % memoir
+\captiontitlefont{\sffamily} % memoir
+\subcaptionlabelfont{\sffamily} % memoir
+\subcaptionfont{\sffamily} % memoir
+% Make the sub* counter letters without any parentheses. Also make it smallcaps
+% for \*ref.
+\renewcommand{\thesubfigure}{\scshape\alph{subfigure}}
+\renewcommand{\thesubtable}{\scshape\alph{subtable}}
+% However this also changes the label printed right before the caption to
+% smallcaps. To revert this we overwrite the memoir-internals \@thesub*. The
+% default is to have \@thesubfigure defined as
+% \thesubfigure\if@tightsubcap\hskip\subfloatlabelskip\else\space\fi. We change
+% out \thesubfigure (which we just made smallcaps) with \Alph{subfigure} to get
+% uppercase letters. This is undocumented in the memoir, but the memoir manual
+% states that the subcaptions is copied from the subfigure packages with some
+% name changes. Section 5.5 Subfigure Constants of the subfigure manual
+% describes \thesubfigure, \@thesubfigure et. al. The default (with few a few
+% name changes) is taken from memoir.dtx.
+\makeatletter
+\def\@thesubfigure{\Alph{subfigure}%
+  \if@tightsubcap\hskip\subfloatlabelskip\else\space\fi}
+\def\@thesubtable{\Alph{subtable}%
+  \if@tightsubcap\hskip\subfloatlabelskip\else\space\fi}
+\makeatother
 
 % Use micro-typography.
 % Bringhurst 9.4.1 Use the best available justification engine
